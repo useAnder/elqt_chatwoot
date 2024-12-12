@@ -40,6 +40,7 @@ replace_files() {
     # Lista de arquivos para substituir (caminho url)
     replace_file "app/views/layouts/vueapp.html.erb" "https://raw.githubusercontent.com/useAnder/chatwoot/refs/heads/develop/app/views/layouts/vueapp.html.erb"
     replace_file "public/brand-assets/logo.svg" "https://raw.githubusercontent.com/useAnder/chatwoot/refs/heads/develop/public/brand-assets/logo.svg"
+    replace_file "config/installation_config.yml" "https://raw.githubusercontent.com/useAnder/chatwoot/refs/heads/develop/config/installation_config.yml"    
 }
 
 # Chama a função de substituição
