@@ -2,8 +2,8 @@
 
 # Função para substituir arquivo
 replace_file() {
-    local target_path="$1"
-    local download_url="$2"
+    target_path="$1"
+    download_url="$2"
 
     # Verifica se o caminho de destino foi fornecido
     if [ -z "$target_path" ] || [ -z "$download_url" ]; then
@@ -35,19 +35,12 @@ replace_file() {
     fi
 }
 
-# Array de tuplas (caminho_destino url_download)
+# Executa a substituição de arquivos
 replace_files() {
-    files="app/views/layouts/vueapp.html.erb https://raw.githubusercontent.com/useAnder/chatwoot/refs/heads/develop/app/views/layouts/vueapp.html.erb
-            public/brand-assets/logo.svg https://raw.githubusercontent.com/useAnder/chatwoot/refs/heads/develop/public/brand-assets/logo.svg"
-
-    echo "$files" | while read -r target_path download_url; do
-        if [ -n "$target_path" ] && [ -n "$download_url" ]; then
-            replace_file "$target_path" "$download_url"
-        fi
-    done
+    # Lista de arquivos para substituir (caminho url)
+    replace_file "app/views/layouts/vueapp.html.erb" "https://raw.githubusercontent.com/useAnder/chatwoot/refs/heads/develop/app/views/layouts/vueapp.html.erb"
+    replace_file "public/brand-assets/logo.svg" "https://raw.githubusercontent.com/useAnder/chatwoot/refs/heads/develop/public/brand-assets/logo.svg"
 }
 
-# Executa a substituição de arquivos
-replace_files
-        
-      
+# Chama a função de substituição
+replace_files     
