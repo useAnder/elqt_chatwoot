@@ -9,13 +9,13 @@ replace_file() {
     if [ -z "$target_path" ] || [ -z "$download_url" ]; then
         echo "Erro: Caminho de destino ou URL de download inválidos"
         return 1
-    }
+    fi
 
     # Cria backup do arquivo original
     if [ -f "$target_path" ]; then
         cp "$target_path" "$target_path.bkp"
         echo "Backup criado: $target_path.bkp"
-    }
+    fi
 
     # Baixa o novo arquivo
     wget -O "$target_path" "$download_url"
@@ -32,7 +32,7 @@ replace_file() {
             echo "Backup restaurado"
         fi
         return 1
-    }
+    fi
 }
 
 # Array de tuplas (caminho_destino url_download)
