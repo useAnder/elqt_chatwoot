@@ -37,19 +37,17 @@ replace_file() {
 
 # Array de tuplas (caminho_destino url_download)
 replace_files() {
-    local files=(
-        "app/views/layouts/vueapp.html.erb" "https://raw.githubusercontent.com/useAnder/chatwoot/refs/heads/develop/app/views/layouts/vueapp.html.erb"
-        "public/brand-assets/logo.svg" "https://raw.githubusercontent.com/useAnder/chatwoot/refs/heads/develop/public/brand-assets/logo.svg"
-        # Adicione mais tuplas aqui
-    )
+    files="app/views/layouts/vueapp.html.erb https://raw.githubusercontent.com/useAnder/chatwoot/refs/heads/develop/app/views/layouts/vueapp.html.erb
+            public/brand-assets/logo.svg https://raw.githubusercontent.com/useAnder/chatwoot/refs/heads/develop/public/brand-assets/logo.svg"
 
-    # Itera sobre as tuplas
-    i=0
-    while [ $i -lt ${#files[@]} ]; do
-        replace_file "${files[$i]}" "${files[$i+1]}"
-        i=$((i+2))
+    echo "$files" | while read -r target_path download_url; do
+        if [ -n "$target_path" ] && [ -n "$download_url" ]; then
+            replace_file "$target_path" "$download_url"
+        fi
     done
 }
 
 # Executa a substituição de arquivos
 replace_files
+        
+      
